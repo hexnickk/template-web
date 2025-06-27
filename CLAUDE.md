@@ -101,7 +101,6 @@ template-web/
 
 - Tailwind CSS v4 with modern CSS features
 - CSS custom properties for theming
-- Dark mode support with CSS custom variants
 - Component-specific styles using utility classes
 - Animation support via tw-animate-css
 
@@ -151,9 +150,8 @@ template-web/
 2. **Type Safety**: Full TypeScript support with strict mode
 3. **Component Library**: 50+ pre-built, accessible UI components
 4. **Form Handling**: Integrated React Hook Form with Zod validation
-5. **Dark Mode**: Built-in dark mode support with system preference detection
-6. **Responsive Design**: Mobile-first approach with responsive utilities
-7. **Performance**: Optimized builds with code splitting and tree shaking
+5. **Responsive Design**: Simplified mobile/tablet and desktop breakpoints
+6. **Performance**: Optimized builds with code splitting and tree shaking
 
 ### Production Considerations
 
@@ -171,6 +169,97 @@ template-web/
 4. **Types**: Utilize generated route types for type safety
 5. **Forms**: Use React Hook Form with Zod for validation
 6. **Errors**: Implement error boundaries for graceful error handling
+
+## UI Development Guidelines
+
+### Component Creation Best Practices
+
+1. **Always Use shadcn/ui Components**: Import from `app/components/ui` - never recreate existing components
+2. **File Naming**: Use kebab-case for all component files (e.g., `user-profile.tsx`, `dashboard-layout.tsx`)
+3. **Production-Ready Code**: Always implement full functionality - no placeholders, mocks, or TODO comments
+4. **Icons**: Use Lucide React icons exclusively from `lucide-react` package
+
+### Styling Guidelines
+
+1. **Color Palette**: Avoid indigo/blue unless specifically requested - use neutral grays and custom brand colors
+2. **Responsive Design**: ALWAYS create responsive layouts using Tailwind's responsive prefixes
+3. **Background Colors**: When full-page backgrounds are needed, use wrapper elements with Tailwind classes
+4. **Animations**: Use `tw-animate-css` for smooth transitions and micro-interactions
+
+### Responsive Design Patterns
+
+1. **Simplified Breakpoints**: Use only `lg:` breakpoint (1024px) to separate mobile/tablet from desktop
+2. **Common Patterns**:
+   ```tsx
+   // Responsive padding
+   className="p-4 lg:p-8"
+   
+   // Responsive grid (mobile/tablet vs desktop)
+   className="grid grid-cols-1 lg:grid-cols-3 gap-4"
+   
+   // Responsive text
+   className="text-base lg:text-lg"
+   
+   // Responsive flex direction
+   className="flex flex-col lg:flex-row"
+   ```
+3. **Container Usage**: Use `max-w-7xl mx-auto px-4` for content centering on large screens
+4. **Hidden/Show Elements**: Use `hidden lg:block` or `block lg:hidden` for responsive visibility
+
+### Images and Media
+
+1. **Icons**: Never use inline SVGs - always import from `lucide-react`
+2. **Image Optimization**: Set appropriate width/height attributes for performance
+
+### Form Implementation
+
+1. **Structure**: Use React Hook Form with Zod validation for all forms
+2. **Components**: Utilize shadcn/ui form components (Input, Select, Checkbox, etc.)
+3. **Error Handling**: Display validation errors using the form's error state
+4. **Loading States**: Show pending states during form submission
+
+### Accessibility Standards
+
+1. **Semantic HTML**: Use appropriate elements (`main`, `nav`, `header`, `footer`)
+2. **ARIA Labels**: Include proper ARIA attributes for interactive elements
+3. **Screen Readers**: Use `sr-only` class for screen-reader-only text
+4. **Alt Text**: Provide descriptive alt text for all informational images
+
+### Code Organization
+
+1. **Component Structure**: Keep components focused and single-purpose
+2. **Utility Functions**: Place shared utilities in `app/lib/utils.ts`
+3. **Custom Hooks**: Create reusable hooks in `app/hooks/`
+4. **Type Definitions**: Define component props interfaces explicitly
+
+### Common UI Patterns
+
+1. **Layout Components**:
+   - Use consistent spacing with Tailwind's spacing scale
+   - Apply `max-w-7xl mx-auto` for content centering on large screens
+   - Use CSS Grid or Flexbox for complex layouts
+
+2. **Card Components**:
+   - Always use shadcn/ui Card components
+   - Include proper padding with `p-4` or `p-6`
+   - Add subtle shadows with `shadow-sm` or `shadow-md`
+
+3. **Navigation**:
+   - Use shadcn/ui NavigationMenu for complex navigation
+   - Implement mobile menus with Sheet component
+   - Add active states using React Router's NavLink
+
+4. **Data Display**:
+   - Use shadcn/ui Table for tabular data
+   - Implement loading states with Skeleton components
+   - Add empty states with clear messaging
+
+### Performance Optimization
+
+1. **Code Splitting**: Leverage React Router's lazy loading for routes
+2. **Image Loading**: Use lazy loading for below-the-fold images
+3. **Bundle Size**: Import only needed components from libraries
+4. **CSS**: Tailwind's JIT compiler ensures minimal CSS output
 
 ### Important Notes
 
