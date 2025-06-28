@@ -14,6 +14,7 @@
 - ALWAYS run `npm run fmt` after code changes
 - ALWAYS run `npm run typecheck` before marking tasks complete
 - ALWAYS mark tasks complete IMMEDIATELY after finishing
+- ALWAYS use English for ALL code and text changes, regardless of request language
 
 ## EXECUTION_COMMANDS
 
@@ -44,6 +45,7 @@ app/
 ├── hooks/            # Custom hooks
 ├── lib/utils.ts      # Utility functions (cn function)
 ├── routes/           # Route components
+│   └── home.tsx      # Main home page
 ├── app.css          # Global styles
 ├── root.tsx         # Root layout
 └── routes.ts        # Route configuration

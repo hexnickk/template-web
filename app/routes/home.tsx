@@ -1,15 +1,15 @@
 import type { Route } from "./+types/home";
-import { Button } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
+import { Button } from "app/components/ui/button";
+import { Card, CardContent } from "app/components/ui/card";
+import { Badge } from "app/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../components/ui/accordion";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
-import { H1, H2, H3, P, Lead, Subtitle } from "../components/ui/typography";
+} from "app/components/ui/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "app/components/ui/avatar";
+import { H1, H2, H3, P, Lead, Subtitle } from "app/components/ui/typography";
 import {
   Heart,
   Users,
@@ -17,7 +17,9 @@ import {
   Camera,
   Star,
   CheckCircle,
+  Mail,
 } from "lucide-react";
+import { SubscribeForm } from "app/components/subscribe-form";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -246,7 +248,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center gap-3">
                   <Avatar>
-                    <AvatarImage src="/api/placeholder/40/40" />
+                    <AvatarImage src="" />
                     <AvatarFallback>SM</AvatarFallback>
                   </Avatar>
                   <div>
@@ -275,7 +277,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center gap-3">
                   <Avatar>
-                    <AvatarImage src="/api/placeholder/40/40" />
+                    <AvatarImage src="" />
                     <AvatarFallback>JD</AvatarFallback>
                   </Avatar>
                   <div>
@@ -304,7 +306,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center gap-3">
                   <Avatar>
-                    <AvatarImage src="/api/placeholder/40/40" />
+                    <AvatarImage src="" />
                     <AvatarFallback>ER</AvatarFallback>
                   </Avatar>
                   <div>
@@ -390,6 +392,26 @@ export default function Home() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-20">
+        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
+          <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
+            <Mail className="h-8 w-8 text-blue-600" />
+          </div>
+          <H2 className="mb-4">Stay Updated with PawConnect</H2>
+          <p className="mb-8 text-lg text-gray-600">
+            Get the latest tips for dog socialization, community events, and new
+            features delivered to your inbox.
+          </p>
+          <div className="mx-auto max-w-md">
+            <SubscribeForm />
+          </div>
+          <p className="mt-4 text-sm text-gray-500">
+            No spam, unsubscribe anytime. We respect your privacy.
+          </p>
         </div>
       </section>
 
